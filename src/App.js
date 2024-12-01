@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter, Routes, Route, BrowserRouter } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import AttendancePage from "./components/attendance";
+import Sidebar from "./components/Sidebar";
+import ViewAllMembers from "./components/ViewAllMembers";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <main>
+          {/* <Sidebar /> */}
+          <div style={{ display: "flex" }}>
+            {/* Sidebar */}
+            <Sidebar />
+
+            {/* Main Content */}
+            <div style={{ padding: "5px", width: "100%" }}>
+              <Routes>
+                <Route path="/attendance" element={<AttendancePage />} />
+            <Route path="/" element={<HomePage />} exact />
+            <Route path="/allmembers" element={<ViewAllMembers />} exact />
+              </Routes>
+         
+            </div>
+          </div>
+
+        </main>
+      </BrowserRouter>
+    </>
   );
 }
 
